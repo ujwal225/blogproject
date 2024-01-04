@@ -40,6 +40,11 @@
                                    <td>
                                        <a href="{{route('backend.category.show', $category->id)}}" class="btn btn-success">View</a>
                                        <a href="#" class="btn btn-primary">Edit</a>
+                                       <form method="post" action="{{route('backend.category.destroy', $category->id)}}">
+                                           @csrf
+                                           <input type="hidden" name="_method" value="DELETE">
+                                           <input type="submit" class="btn btn-danger" value="DELETE">
+                                       </form>
                                    </td>
 
 
