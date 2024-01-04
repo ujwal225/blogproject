@@ -45,7 +45,7 @@
                                 <td>{{$category['record']->updated_at}}</td>
                             </tr>
                             <tr>
-                                <th>Created_at</th>
+                                <th>Created_by</th>
                                 <td>{{\App\Models\User::find($category['record']->created_by)->name}}</td>
                             </tr>
                         </table>
