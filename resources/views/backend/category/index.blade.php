@@ -39,10 +39,11 @@
                                    </td>
                                    <td>
                                        <a href="{{route('backend.category.show', $category->id)}}" class="btn btn-success">View</a>
-                                   </td>
-                                   <td>
                                        <a href="#" class="btn btn-primary">Edit</a>
                                    </td>
+
+
+
                                </tr>
                            @endforeach
                        </table>
