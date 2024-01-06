@@ -59,7 +59,8 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $category['record'] = Category::find($id);
+        return view('backend.category.edit', compact('category'));
     }
 
     /**
@@ -67,7 +68,9 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $category['record'] = Category::find($id);
+        $category['record']->update($request->all());
+        return view('backend.category.edit', compact('category'));
     }
 
     /**
@@ -76,7 +79,11 @@ class CategoryController extends Controller
     public function destroy(string $id)
     {
         $category = Category::find($id);
-        $category->delete();
+       if($category->delete()) {
+           request()->session()->flash('success','Category Deleted Successfully.');
+    } else {
+        request()->session()->flash('error', 'Category Deletion Failed !');
+    }
         return redirect()->route('backend.category.index');
     }
 }

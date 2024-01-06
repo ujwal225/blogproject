@@ -28,5 +28,8 @@ Route::get('/index', function(){
 Route::get('/backend/category/create', [\App\Http\Controllers\Backend\CategoryController::class, 'create'])->name('backend.category.create');
 Route::post('/backend/category', [\App\Http\Controllers\Backend\CategoryController::class, 'store'])->name('backend.category.store');
 Route::get('/backend/category', [\App\Http\Controllers\Backend\CategoryController::class, 'index'])->name('backend.category.index');
-Route::get('/backend/category/{id}', [\App\Http\Controllers\Backend\CategoryController::class, 'show'])->name('backend.category.show');
+Route::get('/backend/category/{id}/show', [\App\Http\Controllers\Backend\CategoryController::class, 'show'])->name('backend.category.show');
 Route::delete('/backend/category/{id}',[\App\Http\Controllers\Backend\CategoryController::class, 'destroy'])->name('backend.category.destroy');
+
+Route::get('/backend/category/{id}/edit', [\App\Http\Controllers\Backend\CategoryController::class, 'edit'])->name('backend.category.edit');
+Route::put('/backend/category/{id}', [\App\Http\Controllers\Backend\CategoryController::class, 'update'])->name('backend.category.update');

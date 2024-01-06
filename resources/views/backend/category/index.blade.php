@@ -17,6 +17,16 @@
                     </div>
 
                     <div class="card-body">
+                        @if(session('success'))
+                            <div class="alert alert-success">
+                                {{session('success')}}
+                            </div>
+                        @endif
+                        @if(session('error'))
+                            <div class="alert alert-danger">
+                                {{session('error')}}
+                            </div>
+                        @endif
                        <table class="table table-bordered">
                            <tr>
                                <th>Sn</th>
@@ -39,7 +49,7 @@
                                    </td>
                                    <td>
                                        <a href="{{route('backend.category.show', $category->id)}}" class="btn btn-success">View</a>
-                                       <a href="#" class="btn btn-primary">Edit</a>
+                                       <a href="{{route('backend.category.edit', $category->id)}}" class="btn btn-warning">Edit</a>
                                        <form method="post" action="{{route('backend.category.destroy', $category->id)}}">
                                            @csrf
                                            <input type="hidden" name="_method" value="DELETE">
