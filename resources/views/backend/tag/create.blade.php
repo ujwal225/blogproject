@@ -1,6 +1,6 @@
 @extends('layouts.backend_master')
 
-@section('title', 'Create Category')
+@section('title', 'Create tag')
 
 @section('content')
 
@@ -8,25 +8,25 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-4 text-gray-800">Category Create</h1>
+        <h1 class="h3 mb-4 text-gray-800">Tag Create</h1>
         <div class="row">
             <div class="col-12">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Category Form</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Tag Form</h6>
                     </div>
                     <div class="card-body">
                         @if(session('success'))
-                        <div class="alert alert-success">
-                            {{session('success')}}
-                        </div>
+                            <div class="alert alert-success">
+                                {{session('success')}}
+                            </div>
                         @endif
-                            @if(session('error'))
-                                <div class="alert alert-danger">
-                                    {{session('error')}}
-                                </div>
-                            @endif
-                        <form action="{{route('backend.category.store')}}" method="POST">
+                        @if(session('error'))
+                            <div class="alert alert-danger">
+                                {{session('error')}}
+                            </div>
+                        @endif
+                        <form action="{{route('backend.tag.store')}}" method="POST">
                             @csrf
                             <div class="form-group">
                                 <label for="title">Title</label>
@@ -40,15 +40,6 @@
                                 <label for="slug">Slug</label>
                                 <input type="text" class="form-control" name="slug" value="{{old('slug')}}" placeholder="Enter slug" />
                                 @error('slug')
-                                <span class="text text-danger">{{$message}}</span>
-                                @enderror
-                            </div>
-
-
-                            <div class="form-group">
-                                <label for="rank">Rank</label>
-                                <input type="number" class="form-control" name="rank" value="{{old('rank')}}" placeholder="Enter rank" />
-                                @error('rank')
                                 <span class="text text-danger">{{$message}}</span>
                                 @enderror
                             </div>
@@ -67,16 +58,13 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-
+        </div>
+        <!-- /.container-fluid -->
     </div>
-    <!-- /.container-fluid -->
-
-    </div>
-
 @endsection

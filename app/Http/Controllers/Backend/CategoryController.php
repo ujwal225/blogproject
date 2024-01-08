@@ -66,11 +66,16 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(CategoryRequest $request, string $id)
     {
         $category['record'] = Category::find($id);
-        $category['record']->update($request->all());
-        return view('backend.category.edit', compact('category'));
+        $request->request->add(['updated_by' => Auth::user()->id]);
+       if($category['record']->update($request->all())) {
+           request()->session()->flash('success','Category Updated Successfully.');
+       } else {
+           request()->session()->flash('error','Category Update Failed !');
+       }
+        return redirect()->route('backend.category.index');
     }
 
     /**

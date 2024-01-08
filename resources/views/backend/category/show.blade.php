@@ -48,6 +48,12 @@
                                 <th>Created_by</th>
                                 <td>{{\App\Models\User::find($category['record']->created_by)->name}}</td>
                             </tr>
+                            @if(!empty($category['record']->updated_by))
+                            <tr>
+                                <th>Updated_by</th>
+                                <td>{{\App\Models\User::find($category['record']->updated_by)->name}}</td>
+                            </tr>
+                            @endif
                         </table>
                         {{-- <div class="mt-2">
                              {{$categories['records']->links()}}

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategoryRequest extends FormRequest
+class TagRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,10 +22,8 @@ class CategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|unique:categories,title,'. $this->id ,
+            'title' => 'required|unique:tags,title,'. $this->id ,
             'slug' => 'required',
-            'rank' => 'required|integer',
-
         ];
     }
 }

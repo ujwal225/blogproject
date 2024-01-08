@@ -83,8 +83,8 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
 
-                    <a class="collapse-item" href="#">Create</a>
-                    <a class="collapse-item" href="#">List</a>
+                    <a class="collapse-item" href="{{route('backend.tag.create')}}">Create</a>
+                    <a class="collapse-item" href="{{route('backend.tag.index')}}">List</a>
 
                 </div>
             </div>
