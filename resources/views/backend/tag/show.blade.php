@@ -45,7 +45,7 @@
                                 <th>Created_by</th>
                                 <td>{{\App\Models\User::find($tag['record']->created_by)->name}}</td>
                             </tr>
-                            @if(!empty($category['record']->updated_by))
+                            @if(!empty($tag['record']->updated_by))
                                 <tr>
                                     <th>Updated_by</th>
                                     <td>{{\App\Models\User::find($tag['record']->updated_by)->name}}</td>

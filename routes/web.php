@@ -41,3 +41,10 @@ Route::delete('/backend/tag/{id}', [\App\Http\Controllers\Backend\TagController:
 Route::get('/backend/tag/{id}/edit', [\App\Http\Controllers\Backend\TagController::class, 'edit'])->name('backend.tag.edit');
 Route::put('/backend/tag/{id}', [\App\Http\Controllers\Backend\TagController::class, 'update'])->name('backend.tag.update');
 
+Route::get('/backend/post/create', [\App\Http\Controllers\Backend\PostController::class, 'create'])->name('backend.post.create');
+Route::post('/backend/post', [\App\Http\Controllers\Backend\PostController::class, 'store'])->name('backend.post.store');
+Route::get('/backend/post', [\App\Http\Controllers\Backend\PostController::class, 'index'])->name('backend.post.index');
+Route::get('/backend/post/{id}/show', [\App\Http\Controllers\Backend\PostController::class, 'show'])->name('backend.post.show');
+Route::delete('/backend/post/{id}', [\App\Http\Controllers\Backend\PostController::class, 'destroy'])->name('backend.post.destroy');
+Route::get('/backend/post/{id}/edit', [\App\Http\Controllers\Backend\PostController::class, 'edit'])->name('backend.post.edit');
+Route::put('/backend/post/{id}', [\App\Http\Controllers\Backend\PostController::class, 'update'])->name('backend.post.update');

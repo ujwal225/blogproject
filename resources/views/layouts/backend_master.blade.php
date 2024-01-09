@@ -108,8 +108,8 @@
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
 
-                    <a class="collapse-item" href="login.html">Create</a>
-                    <a class="collapse-item" href="register.html">List</a>
+                    <a class="collapse-item" href="{{route('backend.post.create')}}">Create</a>
+                    <a class="collapse-item" href="{{route('backend.post.index')}}">List</a>
                     <a class="collapse-item" href="forgot-password.html">Comments</a>
 
                 </div>
