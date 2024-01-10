@@ -88,7 +88,7 @@
                                 <select  class="form-control" name="tag_id" multiple>
                                     <option value="">Select Tags</option>
                                     @foreach($data['tags'] as $tag)
-                                        <option value="{{$tag->id}}" {{$data['tags']->id == $post['record']->tag_id? 'selected': ''}}>{{$tag->title}}</option>
+                                        <option value="{{$tag->id}}" {{in_array($tag->id, $tagId) ? 'selected': ''}}>{{$tag->title}}</option>
                                     @endforeach
                                 </select>
                                 @error('tag_id')

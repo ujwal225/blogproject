@@ -11,6 +11,7 @@ use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\Console\Input\Input;
 
 class PostController extends Controller
 {
@@ -65,7 +66,8 @@ class PostController extends Controller
     public function show(string $id)
     {
         $post['record'] = Post::find($id);
-        return view('backend.post.show', compact('post'));
+        $tagId = $post['record']->tags;
+        return view('backend.post.show', compact('post','tagId'));
     }
 
     /**
@@ -76,7 +78,8 @@ class PostController extends Controller
         $post['record'] = Post::find($id);
         $data['tags'] = Tag::select('id', 'title')->get();
         $post['categories'] = Category::select('id', 'title')->get();
-        return view('backend.post.edit', compact('post', 'data'));
+        $tagId = $post['record']->tags->pluck('id')->toArray();
+        return view('backend.post.edit', compact('post', 'data', 'tagId'));
     }
 
     /**
@@ -92,7 +95,9 @@ class PostController extends Controller
             $image->move('images/post/', $fname);
             $request->request->add(['feature_image' => $fname]);
         }
+
         if($post['record']->update($request->all())) {
+         $post['record']->tags()->sync($request->input('tag_id'));
             request()->session()->flash('success','Post Updated Successfully.');
         } else {
             request()->session()->flash('error','Post Update Failed !');

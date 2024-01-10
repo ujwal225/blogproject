@@ -50,6 +50,16 @@
                                 <td><img src="{{asset('/images/post/'. $post['record']->feature_image)}}" alt="image" /></td>
                             </tr>
                             <tr>
+                                <th>Tags</th>
+                               <td>
+                                   <ul>
+                                       @foreach($tagId as $tags)
+                                           <li>{{$tags->title}}</li>
+                                       @endforeach
+                                   </ul>
+                               </td>
+                            </tr>
+                            <tr>
                                 <th>views</th>
                                 <td>{{$post['record']->view_count}}</td>
                             </tr>
