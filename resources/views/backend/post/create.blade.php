@@ -43,15 +43,15 @@
 
                             <div class="form-group">
                                 <label for="title">Title</label>
-                                <input type="text" class="form-control" name="title" value="{{old('title')}}" placeholder="Enter title" />
+                                <input type="text" id="title" class="form-control" name="title" value="{{old('title')}}" placeholder="Enter title" />
                                 @error('title')
                                 <span class="text text-danger">{{$message}}</span>
                                 @enderror
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group" >
                                 <label for="slug">Slug</label>
-                                <input type="text" class="form-control" name="slug" value="{{old('slug')}}" placeholder="Enter slug" />
+                                <input type="text" id="slug" class="form-control" name="slug" value="{{old('slug')}}" placeholder="Enter slug" />
                                 @error('slug')
                                 <span class="text text-danger">{{$message}}</span>
                                 @enderror
@@ -66,7 +66,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="description">Description</label>
-                                <textarea type="text" class="form-control" name="description" value="{{old('description')}}" placeholder="Enter description" ></textarea>
+                                <textarea type="text" class="form-control" id="editor" name="description" value="{{old('description')}}" placeholder="Enter description" ></textarea>
                                 @error('description')
                                 <span class="text text-danger">{{$message}}</span>
                                 @enderror
@@ -115,4 +115,20 @@
         <!-- /.container-fluid -->
     </div>
 
+@endsection
+@section('script')
+    <script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#editor' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+        $('#title').keyup( function() {
+            var Text = $(this).val();
+            Text = Text.toLowerCase();
+            Text = Text.replace(/[^a-zA-Z0-9]+/g, '-');
+            $('#slug').val(Text);
+        });
+    </script>
 @endsection

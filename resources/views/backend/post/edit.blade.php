@@ -69,7 +69,7 @@
 
                             <div class="form-group">
                                 <label for="description">Description</label>
-                                <textarea type="text" class="form-control" name="description" placeholder="Enter description" >{{$post['record']->description}}</textarea>
+                                <textarea type="text" class="form-control" id="editor" name="description" placeholder="Enter description" >{{$post['record']->description}}</textarea>
                                 @error('description')
                                 <span class="text text-danger">{{$message}}</span>
                                 @enderror
@@ -133,4 +133,14 @@
         </div>
         <!-- /.container-fluid -->
     </div>
+@endsection
+@section('script')
+    <script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#editor' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
 @endsection
