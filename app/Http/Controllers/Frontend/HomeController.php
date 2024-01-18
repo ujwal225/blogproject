@@ -25,4 +25,8 @@ class HomeController extends Controller
 
         return view('frontend.page_detail', compact('data'));
     }
+    function aboutPage()
+    {
+        return view('frontend.about');
+    }
 }
