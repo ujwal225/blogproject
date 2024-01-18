@@ -19,4 +19,10 @@ class HomeController extends Controller
         }
         return view('frontend.home',['dateInWords' => $dateInWords], compact('data'));
     }
+    function postDetail($slug)
+    {
+        $data['post'] = Post::where('slug', $slug)->first();
+
+        return view('frontend.page_detail', compact('data'));
+    }
 }

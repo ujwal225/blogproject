@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [\App\Http\Controllers\Frontend\HomeController::class, 'homePage'])->name('frontend.home');
+Route::get('/post/{slug}', [\App\Http\Controllers\Frontend\HomeController::class, 'postDetail'])->name('frontend.post_detail');
 
 Auth::routes();
 
