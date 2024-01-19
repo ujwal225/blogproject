@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [\App\Http\Controllers\Frontend\HomeController::class, 'homePage'])->name('frontend.home');
 Route::get('/post/{slug}', [\App\Http\Controllers\Frontend\HomeController::class, 'postDetail'])->name('frontend.post_detail');
 Route::get('/about/', [\App\Http\Controllers\Frontend\HomeController::class, 'aboutPage'])->name('frontend.about');
-
+Route::get('/contact/', [\App\Http\Controllers\Frontend\HomeController::class, 'contactPage'])->name('frontend.contact');
+Route::post('/comment/{slug}', [\App\Http\Controllers\Frontend\HomeController::class, 'storeComment'])->name('frontend.post_comment');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

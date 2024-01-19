@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Frontend;
+use App\Models\Comment;
 use carbon\carbon;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,10 +25,24 @@ class HomeController extends Controller
     {
         $data['post'] = Post::where('slug', $slug)->first();
 
-        return view('frontend.page_detail', compact('data'));
+        return view('frontend.post_detail', compact('data'));
     }
     function aboutPage()
     {
         return view('frontend.about');
+    }
+
+    function contactPage()
+    {
+        return view('frontend.contact');
+    }
+
+    function storeComment(request $request, $id)
+    {
+        $request->request->add(['post_id' => $id]);
+        $record = Comment::create($request->all());
+
+        return redirect()->route('frontend.post_detail', ['slug' => Post::find($id)->slug] );
+
     }
 }
