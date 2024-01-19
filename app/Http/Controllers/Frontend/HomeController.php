@@ -14,6 +14,7 @@ class HomeController extends Controller
     {
         //use 'disc' in order by for descrete order
         $data['posts'] = Post::where('status',1)->orderBy('created_at')->get();
+
         $dateInWords = [];
         foreach ($data['posts'] as $post) {
             $carbonDate = Carbon::parse($post->created_at);
@@ -24,7 +25,7 @@ class HomeController extends Controller
     function postDetail($slug)
     {
         $data['post'] = Post::where('slug', $slug)->first();
-
+        $data['comment'] = Comment::where('post_id', $data['post']->id)->get();
         return view('frontend.post_detail', compact('data'));
     }
     function aboutPage()

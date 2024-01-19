@@ -35,6 +35,26 @@
     </article>
     <div class="my-5 mx-5">
         <h3>comments</h3>
+        @if(!empty($data['comment']))
+        @foreach($data['comment'] as $comment)
+            <div class="card mb-4">
+                <div class="card-body bg-secondary">
+                    <p class="text-md-center">{{$comment->comment}}</p>
+
+                    <div class="d-flex justify-content-between">
+                        <div class="d-flex flex-row align-items-center">
+
+                            <p class="small mb-0 ms-2"><i class="fa-solid fa-user"></i> {{$comment->name}}</p>
+                        </div>
+                        <div class="d-flex flex-row align-items-center">
+                            <p class="small text-black mb-0 "><i class="fa-regular fa-clock"></i> {{$comment->created_at}}</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+        @endif
         <!-- * * * * * * * * * * * * * * *-->
         <!-- * * SB Forms Contact Form * *-->
         <!-- * * * * * * * * * * * * * * *-->
@@ -42,6 +62,7 @@
         <!-- To make this form functional, sign up at-->
         <!-- https://startbootstrap.com/solution/contact-forms-->
         <!-- to get an API token!-->
+        <h4 class="mt-4">Add your Comment</h4>
         <form method="post" action="{{route('frontend.post_comment', $data['post']->id)}}" id="contactForm" >
             @csrf
             <div class="form-floating">
