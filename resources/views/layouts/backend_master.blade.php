@@ -110,7 +110,7 @@
 
                     <a class="collapse-item" href="{{route('backend.post.create')}}">Create</a>
                     <a class="collapse-item" href="{{route('backend.post.index')}}">List</a>
-                    <a class="collapse-item" href="forgot-password.html">Comments</a>
+                    <a class="collapse-item" href="{{route('backend.comment.index')}}">Comments</a>
 
                 </div>
             </div>

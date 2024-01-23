@@ -36,7 +36,9 @@
     <div class="my-5 mx-5">
         <h3>comments</h3>
         @if(!empty($data['comment']))
+
         @foreach($data['comment'] as $comment)
+                @if($comment->status != 0)
             <div class="card mb-4">
                 <div class="card-body bg-secondary">
                     <p class="text-md-center">{{$comment->comment}}</p>
@@ -53,7 +55,9 @@
                     </div>
                 </div>
             </div>
+                    @endif
         @endforeach
+
         @endif
         <!-- * * * * * * * * * * * * * * *-->
         <!-- * * SB Forms Contact Form * *-->

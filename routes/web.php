@@ -49,3 +49,8 @@ Route::get('/backend/post/{id}/show', [\App\Http\Controllers\Backend\PostControl
 Route::delete('/backend/post/{id}', [\App\Http\Controllers\Backend\PostController::class, 'destroy'])->name('backend.post.destroy');
 Route::get('/backend/post/{id}/edit', [\App\Http\Controllers\Backend\PostController::class, 'edit'])->name('backend.post.edit');
 Route::put('/backend/post/{id}', [\App\Http\Controllers\Backend\PostController::class, 'update'])->name('backend.post.update');
+
+Route::get('/backend/comment', [\App\Http\Controllers\Backend\CommentController::class, 'index'])->name('backend.comment.index');
+Route::get('/backend/comment/{id}/show', [\App\Http\Controllers\Backend\CommentController::class, 'show'])->name('backend.comment.show');
+Route::get('backend/comment/{id}/edit', [\App\Http\Controllers\Backend\CommentController::class, 'edit'])->name('backend.comment.edit');
+Route::put('backend/comment/{id}', [\App\Http\Controllers\Backend\CommentController::class, 'update'])->name('backend.comment.update');
