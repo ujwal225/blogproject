@@ -52,9 +52,9 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control form-control-user @error('email') is-invalid @enderror"
+                                        <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror"
                                                id="exampleInputPassword" placeholder="Password" name="password">
-                                        @error('email')
+                                        @error('password')
                                         <span class="text-denger"><strong>{{$message}}</strong></span>
                                         @enderror
                                     </div>
